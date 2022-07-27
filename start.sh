@@ -1,8 +1,6 @@
 #!/bin/bash
 docker-compose up -d iris1
 docker-compose exec -T iris1 bash -c "\$ISC_PACKAGE_INSTALLDIR/dev/Cloud/ICM/waitISC.sh '' 60"
-# On 2022.2, waitISC.sh dosen't work anymore...
-#sleep 30
 
 # You can't simply "up" members. They will fail to join a cluster without wait something/somehow. Not clear to me.
 docker-compose up -d iris2
