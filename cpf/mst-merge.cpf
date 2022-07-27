@@ -9,6 +9,7 @@ MaxServerConn=64
 MaxServers=64
 globals=0,0,1024,0,0,0
 routines=128
+gmheap=375680
 
 [SQL]
 SaveMAC=1

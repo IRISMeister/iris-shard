@@ -2,9 +2,10 @@ version: '3.2'
 
 services:
   iris1:
-    image: containers.intersystems.com/intersystems/iris:2022.2.0.293.0
+    image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
     hostname: iris1
     command:
+      --check-caps false    
       --key /irisowner/license/iris.key
     ports:
     - "1972:1972"
@@ -19,9 +20,10 @@ services:
     - TZ=JST-9
 
   iris2:
-    image: containers.intersystems.com/intersystems/iris:2022.2.0.293.0
+    image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
     hostname: iris2
     command:
+      --check-caps false    
       --key /irisowner/license/iris.key
     volumes:
     - ./license:/irisowner/license
@@ -31,9 +33,10 @@ services:
     - TZ=JST-9
 
   iris3:
-    image: containers.intersystems.com/intersystems/iris:2022.2.0.293.0
+    image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
     hostname: iris3
     command:
+      --check-caps false    
       --key /irisowner/license/iris.key
     volumes:
     - ./license:/irisowner/license
