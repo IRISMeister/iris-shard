@@ -1,0 +1,2 @@
+Set tSC=$SYSTEM.OBJ.ImportDir("/home/irisowner/taxi/src/cls","*","ck",.err,1)
+h

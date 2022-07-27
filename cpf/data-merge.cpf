@@ -1,0 +1,15 @@
+[Startup]
+PasswordHash=FBFE8593AEFA510C27FD184738D6E865A441DE98,u4ocm4qh
+ShardClusterURL=IRIS://iris1:1972/IRISCLUSTER
+ShardRole=DATA
+SystemMode=TEST
+WebServer=1
+
+[config]
+MaxServerConn=64
+MaxServers=64
+globals=0,0,1024,0,0,0
+routines=128
+
+[SQL]
+SaveMAC=1

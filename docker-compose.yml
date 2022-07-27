@@ -1,0 +1,56 @@
+version: '3.2'
+
+services:
+  iris1:
+    image: containers.intersystems.com/intersystems/iris:2022.2.0.293.0
+    hostname: iris1
+    command:
+      --key /irisowner/license/iris.key
+    ports:
+    - "1972:1972"
+    - "52773:52773"
+    volumes:
+    - ./license:/irisowner/license
+    - ./cpf:/irisowner/cpf
+    - ./isc-taxi-demo:/home/irisowner/taxi
+
+    environment:
+    - ISC_CPF_MERGE_FILE=/irisowner/cpf/mst-merge.cpf
+    - TZ=JST-9
+
+  iris2:
+    image: containers.intersystems.com/intersystems/iris:2022.2.0.293.0
+    hostname: iris2
+    command:
+      --key /irisowner/license/iris.key
+    volumes:
+    - ./license:/irisowner/license
+    - ./cpf:/irisowner/cpf
+    environment:
+    - ISC_CPF_MERGE_FILE=/irisowner/cpf/data-merge.cpf
+    - TZ=JST-9
+
+  iris3:
+    image: containers.intersystems.com/intersystems/iris:2022.2.0.293.0
+    hostname: iris3
+    command:
+      --key /irisowner/license/iris.key
+    volumes:
+    - ./license:/irisowner/license
+    - ./cpf:/irisowner/cpf
+    environment:
+    - ISC_CPF_MERGE_FILE=/irisowner/cpf/data-merge.cpf
+    - TZ=JST-9
+
+  java:
+    build:
+      context: java
+      dockerfile: Dockerfile
+    command:
+      bash
+    tty: true
+    environment:
+      - TZ=JST-9      
+    volumes:
+    - ./java/src:/java/src
+    - ./isc-taxi-demo/data:/java/data

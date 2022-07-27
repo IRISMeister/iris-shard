@@ -1,0 +1,9 @@
+ROUTINE loadtaxi
+ ;;do ##class(NYTaxi.Utils).Load("/home/irisowner/taxi/data")
+ ;; 
+	Set sql="LOAD BULK DATA FROM FILE '/home/irisowner/taxi/data/1Msample.csv' INTO NYTaxi.RowRides (VendorID,tpep_pickup_datetime,tpep_dropoff_datetime,passenger_count,trip_distance,RatecodeID,store_and_fwd_flag,PULocationID,DOLocationID,payment_type,fare_amount,extra,mta_tax,tip_amount,tolls_amount,improvement_surcharge,total_amount) USING '{ ""from"": {""file"": {""columnseparator"":"","", ""header"": true } } }'"
+    set stmt = ##class(%SQL.Statement).%New(),stmt.%SelectMode = 2
+	Set tSC=stmt.%Prepare(sql)
+    set rs = stmt.%Execute()
+	w rs.%ROWCOUNT_" records Loaded",!
+	Return

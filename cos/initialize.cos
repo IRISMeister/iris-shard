@@ -1,0 +1,5 @@
+Set rs=##class(%ResultSet).%New("%File:FileSet") d rs.Execute("/home/irisowner/sql","*.sql")
+While(rs.Next()) { Do $SYSTEM.SQL.Schema.ImportDDL(rs.Name,"/home/irisowner/import_Errors.log") }
+
+Set tSC=$SYSTEM.OBJ.ImportDir("/home/irisowner/src","*","ck",.err,1)
+h
