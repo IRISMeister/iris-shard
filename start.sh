@@ -7,8 +7,10 @@ docker-compose up -d iris2
 docker-compose exec -T iris2 bash -c "\$ISC_PACKAGE_INSTALLDIR/dev/Cloud/ICM/waitISC.sh '' 60"
 docker-compose up -d iris3
 docker-compose exec -T iris3 bash -c "\$ISC_PACKAGE_INSTALLDIR/dev/Cloud/ICM/waitISC.sh '' 60"
+echo "Verifing shards"
 docker-compose exec iris1 iris session iris -UIRISCLUSTER "##class(%SYSTEM.Sharding).VerifyShards()"
 
+echo "Loading classes"
 docker-compose exec -T iris1 iris session iris -U IRISCLUSTER < cos/nytaxi.cos
 docker-compose up -d java
 

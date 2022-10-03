@@ -25,6 +25,8 @@ services:
     command:
       --check-caps false    
       --key /irisowner/license/iris.key
+    ports:
+    - "52774:52773"
     volumes:
     - ./license:/irisowner/license
     - ./cpf:/irisowner/cpf
@@ -38,6 +40,8 @@ services:
     command:
       --check-caps false    
       --key /irisowner/license/iris.key
+    ports:
+    - "52775:52773"
     volumes:
     - ./license:/irisowner/license
     - ./cpf:/irisowner/cpf
